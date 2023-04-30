@@ -1,5 +1,9 @@
-package com.koutsilis1999.blog
+package com.koutsilis1999.blog.controllers
 
+import com.koutsilis1999.blog.*
+import com.koutsilis1999.blog.entities.Article
+import com.koutsilis1999.blog.entities.User
+import com.koutsilis1999.blog.repositories.ArticleRepository
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -9,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.server.ResponseStatusException
 
 @Controller
-class HtmlController(private val repository: ArticleRepository,private val properties: BlogProperties) {
+class HtmlController(private val repository: ArticleRepository, private val properties: BlogProperties) {
 
     @GetMapping("/")
     fun blog(model: Model): String {
@@ -21,22 +25,17 @@ class HtmlController(private val repository: ArticleRepository,private val prope
 
     @GetMapping("/article/{slug}")
     fun article(@PathVariable slug: String, model: Model): String {
-        val article = repository
-            .findBySlug(slug)
-            ?.render()
-            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This article does not exist")
+        val article = repository.findBySlug(slug)?.render() ?: throw ResponseStatusException(
+            HttpStatus.NOT_FOUND,
+            "This article does not exist"
+        )
         model["title"] = article.title
         model["article"] = article
         return "article"
     }
 
     fun Article.render() = RenderedArticle(
-        slug,
-        title,
-        headline,
-        content,
-        author,
-        addedAt.format()
+        slug, title, headline, content, author, addedAt.format()
     )
 
     data class RenderedArticle(
@@ -45,6 +44,7 @@ class HtmlController(private val repository: ArticleRepository,private val prope
         val headline: String,
         val content: String,
         val author: User,
-        val addedAt: String)
+        val addedAt: String
+    )
 
 }

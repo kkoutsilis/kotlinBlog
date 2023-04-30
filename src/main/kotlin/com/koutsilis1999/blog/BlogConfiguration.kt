@@ -1,5 +1,9 @@
 package com.koutsilis1999.blog
 
+import com.koutsilis1999.blog.entities.Article
+import com.koutsilis1999.blog.entities.User
+import com.koutsilis1999.blog.repositories.ArticleRepository
+import com.koutsilis1999.blog.repositories.UserRepository
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

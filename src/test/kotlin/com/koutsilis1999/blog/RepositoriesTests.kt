@@ -1,5 +1,9 @@
 package com.koutsilis1999.blog
 
+import com.koutsilis1999.blog.entities.Article
+import com.koutsilis1999.blog.entities.User
+import com.koutsilis1999.blog.repositories.ArticleRepository
+import com.koutsilis1999.blog.repositories.UserRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -9,9 +13,8 @@ import org.springframework.data.repository.findByIdOrNull
 
 @DataJpaTest
 class RepositoriesTests @Autowired constructor(
-    val entityManager: TestEntityManager,
-    val userRepository: UserRepository,
-    val articleRepository: ArticleRepository) {
+    val entityManager: TestEntityManager, val userRepository: UserRepository, val articleRepository: ArticleRepository
+) {
 
     @Test
     fun `When findByIdOrNull then return Article`() {

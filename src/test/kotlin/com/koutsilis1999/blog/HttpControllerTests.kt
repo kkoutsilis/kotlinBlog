@@ -1,5 +1,9 @@
 package com.koutsilis1999.blog
 
+import com.koutsilis1999.blog.entities.Article
+import com.koutsilis1999.blog.entities.User
+import com.koutsilis1999.blog.repositories.ArticleRepository
+import com.koutsilis1999.blog.repositories.UserRepository
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
 import org.junit.jupiter.api.Test

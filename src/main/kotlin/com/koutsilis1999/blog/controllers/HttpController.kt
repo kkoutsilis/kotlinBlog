@@ -1,7 +1,8 @@
-package com.koutsilis1999.blog
+package com.koutsilis1999.blog.controllers
 
+import com.koutsilis1999.blog.repositories.ArticleRepository
+import com.koutsilis1999.blog.repositories.UserRepository
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
